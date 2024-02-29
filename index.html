@@ -1,60 +1,50 @@
 <!DOCTYPE html>
-<html lang="pl-PL">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poznaj mnie.pl</title>
+    <title>Logowanie do Panelu ucznia</title>
+    <!-- Dodanie tej ładnej ikonki co pojawia się w zakładkach przeglądarki obok tytułu strony -->
+    <link rel="icon" type="image/x-icon" href="https://panel.giganciprogramowania.edu.pl/app/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <!-- dodanie czcionki spoza zestawu domyślnych -->    
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     
-    <link rel="icon" href="C:\Users\kazno\Desktop\Polski-My-Hooby-WEB-Front-end-developer-Junior\img\Logo.jpg">            
-    <meta name="viewport" content=name="viewport" content="width=device-width, initial-scale=1">
-
+    <!-- Dodanie osobnego pliku tylko dla stylów -->
+    
+    <!-- Style też można opisywać w pliku html w specjalnym tagu style --> 
+    <style>
+        #login-button {
+            border: 0px;
+            margin-top: 15px;
+            padding: 15px 25px 15px 25px;
+            font-weight: bold;
+            background-color: rgb(237, 127, 44);
+            color: white;
+            border-radius: 20px;
+        }
+    </style>
 </head>
-
-
-
-      <body style="background-color:#000000; color:white;">
-
+<body onload="alert('strona się ładuję')")>
+    <!-- pudełka na rózne elementy --> 
+    <div id="left-box">
+        <!-- Uzupełniamy 2 obrazki --> 
+        <img id="logo" src="logo.png" alt="Logo Gigantów programowania"></img>
+        <!-- style tzw inline-->
+        <img id="uczniowie" src="uczniowie.png" alt="Grafika przedstawiająca kilku siedzących razem uczniów" style="height: 50%;   position: absolute;  top: 50%;  left: 50%;  transform: translate(-50%, -50%);"></img>
+    </div>
     
-        <script>
-          alert("Witaj na mojej stronie WWW. Życzę ci przyjemnego przeglądania witryny!")
-        </script>
-
-
-        <button><a href="Informacje o projekcie.html" style="color:#8a2be2">Informacje o projekcie</a></button>
-
-        <h1>&#128579;Poznaj moje pasje oraz czym się zajmuje<br>w czasie wolnym!&#128578;</h1>
-
-       
-        <p>Pewnie wiecie wszyczy jak mam na imię, do jakiej klasy chodzę<br>itd.</p>
-
-        <p>Ale czy wiecie czym się interesuje i co<br>mi sprawia przyjemność?</p>
-
-        <p>Moje zainteresowania są <strong>baaaaaardzo nie typowe,</strong><br>ale i też ciekawe!</p>
-
-        <p>Więc zapraszam do przeczytania mojej już<br><strong>15.strony internetowej&#128515;</strong></p>
-
-
-
-      <i>Spis treśći:</i>
-
-
-
-
-      <ul>
-    
-     <li><button><a href="Programowanie.html" style="color:#8a2be2;">Programowanie stron WWW:</a></button></li>
-     <li><button><a href="Sztuczna inteligencja.html" style="color:#8a2be2;">Sztuczna inteligencja itd:</a></button></li>
-     <li><button><a href="Motocykle.html" style="color:#8a2be2;">Motocykle:</a></button></li>
-      
-    </ul>
-
-
-
-
-
-
-
-
+    <!-- pudełka na rózne elementy -->
+    <div id="right-box">
+        <!-- style tzw. inline --> 
+        <form>
+            <h1 >Zaloguj się do serwisu</h1>
+            <!-- style które używamy kilka razy "class"-->
+            <input class="input" type="text" placeholder="Twój adres email">
+            <input class="input" type="text" placeholder="Hasło">
+            <input id="login-button" type="submit" value="Zaloguj się">
+            
+            <!-- style które są TYLKO w jednym miejscu wpisujemy jako id="nazwa" -->
+        </form>
+    </div>
 </body>
 </html>
