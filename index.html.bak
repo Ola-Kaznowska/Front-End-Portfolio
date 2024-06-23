@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sklepik T-800</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="icon" href="img/logo.png" type="image/logo">
+        <link rel="stylesheet" href="style.css">
+    </head>
+	
+	
+	
+	
+	
+	
+	
+    <body>
+	
+	
+        <header>
+            <nav>
+                <img src="img/logo.png">
+                <a href="#"></a>
+                <a href="#"></a>
+                <a href="#"></a>
+            </nav>
+        </header>
+		
+		
+		
+		
+		
+		
+        <div class="container">
+            <div class="container__description">
+                <a class="description__link" href="#">
+                    <img src="img/arrow.png" class="arrow" alt="arrow">
+                    <span class="home">Start</span>
+                </a>
+                <p class="edition">Oferta specjalna</p>
+            </div>
+            <div class="games">
+                <div class="card">
+                    <img src="img/game1.png" alt="game">
+                    <div class="card__description">
+                        <h3 class="card__title">Sekiro: Shadows die twice</h3>
+                        <p class="card__genre">Action, 2019</p>
+                        <p class="card__price">cena.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/game2.png" alt="game">
+                    <div class="card__description">
+                        <h3 class="card__title">Spider - Man</h3>
+                        <p class="card__genre">RPG, 2018</p>
+                        <p class="card__price">cena.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/game3.png" alt="game">
+                    <div class="card__description">
+                        <h3 class="card__title">Assassin’s Creed: Odyssey</h3>
+                        <p class="card__genre">RPG, 2018</p>
+                        <p class="card__price">cena.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
