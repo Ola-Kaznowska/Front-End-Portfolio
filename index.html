@@ -1,21 +1,275 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Budowa Komputera</title>
+    <style>
+        /* General Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto; /* Pozwala na przewijanie strony */
+        }
+
+        header {
+            margin-top: 20px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        /* Cover animation */
+        .cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, #333, #111);
+            z-index: 10;
+            animation: openCover 3s forwards;
+        }
+
+        @keyframes openCover {
+            from { width: 100%; }
+            to { width: 0; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Component container */
+        .components {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+        }
+
+        /* RGB Glow Button Styling */
+        .component {
+            position: relative;
+            width: 250px;
+            text-align: center;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .component-img {
+            width: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .component-img:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7), 0 0 20px #ff00ff, 0 0 25px #00ff00, 0 0 30px #00f;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Hidden description */
+        .description {
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(-20px);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: max-height 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
+            overflow: hidden;
+        }
+
+        /* Show description on hover */
+        .component:hover .description {
+            max-height: 200px; /* Dopasowanie wysokości dla pełnej widoczności tekstu */
+            opacity: 1;
+            transform: translateY(0); /* Slide down effect */
+        }
+
+        /* RGB Button for facts */
+        .info-btn {
+            background-color: #444;
+            border: none;
+            color: #fff;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            box-shadow: 0 0 10px #ff00ff, 0 0 15px #00ff00, 0 0 20px #00f;
+            animation: rgbGlow 2s infinite;
+        }
+
+        .info-btn:hover {
+            box-shadow: 0 0 15px #ff00ff, 0 0 20px #00ff00, 0 0 25px #00f;
+        }
+
+        /* RGB Glow Animation */
+        @keyframes rgbGlow {
+            0% { box-shadow: 0 0 10px #ff00ff, 0 0 15px #00ff00, 0 0 20px #00f; }
+            50% { box-shadow: 0 0 15px #00f, 0 0 20px #ff00ff, 0 0 25px #00ff00; }
+            100% { box-shadow: 0 0 10px #00ff00, 0 0 15px #ff00ff, 0 0 20px #00f; }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Weather App</h1>
-        <input type="text" id="locationInput" placeholder="Enter a city">
-        <button id="Search">Search</button>
-        <div class="weather-info">
-            <h2 id="location"></h2>
-            <p id="temperature"></p>
-            <p id="description"></p>
+
+    <!-- Cover animation for "opening computer" effect -->
+    <div class="cover"></div>
+
+    <header>
+        <h1>Budowa Komputera</h1>
+    </header>
+
+    <section class="components">
+        <!-- CPU Component -->
+        <div class="component">
+            <img src="assets/img/1.png" alt="Procesor" class="component-img">
+            <h2>Procesor</h2>
+            <div class="description">
+                Procesor to jeden z najważniejszych elementów komputera, pełniący rolę mózgu systemu. Nowoczesne procesory, takie jak Intel Core i9 czy AMD Ryzen 9, mają wiele rdzeni i wątków, co pozwala na równoczesne przetwarzanie.
+            </div>
+            <button class="info-btn" onclick="showFact('procesor')">Ciekawostka</button>
         </div>
+
+        <!-- RAM Component -->
+        <div class="component">
+            <img src="assets/img/6.png" alt="Pamięć RAM" class="component-img">
+            <h2>Pamięć RAM</h2>
+            <div class="description">
+                Pamięć RAM (Random Access Memory) to kluczowy element, który przechowuje dane robocze i programy aktualnie używane przez komputer. Większa ilość pamięci RAM umożliwia jednoczesne uruchamianie wielu aplikacji oraz szybsze ładowanie danych.
+            </div>
+            <button class="info-btn" onclick="showFact('ram')">Ciekawostka</button>
+        </div>
+
+        <!-- GPU Component -->
+        <div class="component">
+            <img src="assets/img/2.png" alt="Karta Graficzna" class="component-img">
+            <h2>Karta Graficzna</h2>
+            <div class="description">
+                Karta graficzna odpowiada za renderowanie grafiki i wyświetlanie jej na monitorze. Nowoczesne GPU, takie jak NVIDIA GeForce RTX, są wyposażone w technologie RayTracing'u oraz AI (Artifical Intelligence).
+            </div>
+            <button class="info-btn" onclick="showFact('gpu')">Ciekawostka</button>
+        </div>
+
+        <!-- Cooling Component -->
+        <div class="component">
+            <img src="assets/img/3.png" alt="Chłodzenie" class="component-img">
+            <h2>Chłodzenie</h2>
+            <div class="description">
+                System chłodzenia jest niezwykle ważny, aby utrzymać odpowiednią temperaturę procesora i innych komponentów.
+            </div>
+            <button class="info-btn" onclick="showFact('cooling')">Ciekawostka</button>
+        </div>
+
+        
+        <!-- Motherboard Component -->
+        <div class="component">
+            <img src="assets/img/4.png" alt="Płyta Główna" class="component-img">
+            <h2>Płyta Główna</h2>
+            <div class="description">
+                Płyta główna zarządza komunikacją pomiędzy różnymi podzespołami i pozwala na rozbudowę komputera.
+            </div>
+            <button class="info-btn" onclick="showFact('motherboard')">Ciekawostka</button>
+        </div>
+    
+
+
+
+    <div class="component">
+        <img src="assets/img/8.png" alt="Karta sieciowa" class="component-img">
+        <h2>Karta Sieciowa</h2>
+        <div class="description">
+            Karta sieciowa – umożliwia połączenie komputera z siecią, na przykład internetem. Może działać przewodowo (Ethernet) lub bezprzewodowo (Wi-Fi), pozwalając na przesył danych między urządzeniami w sieci lokalnej lub globalnej.
+        </div>
+        <button class="info-btn" onclick="showFact('network card')">Ciekawostka</button>
     </div>
-    <script src="script.js"></script>
+
+    <div class="component">
+        <img src="assets/img/6.png" alt="SSD" class="component-img">
+        <h2>Dysk M2 SSD</h2>
+        <div class="description">
+            Dysk SSD (Solid State Drive) – służy do przechowywania danych i plików. W porównaniu do tradycyjnych dysków HDD, SSD jest znacznie szybszy, ponieważ nie posiada ruchomych części, co przyspiesza wczytywanie systemu operacyjnego oraz aplikacji.
+        </div>
+        <button class="info-btn" onclick="showFact('SSD')">Ciekawostka</button>
+    </div>
+
+    <div class="component">
+        <img src="assets/img/7.png" alt="Obudowa" class="component-img">
+        <h2>Obudowa</h2>
+        <div class="description">
+            Obudowa-miejsce gdzie montuję się wszystkie podzespoły komputera.
+        </div>
+        <button class="info-btn" onclick="showFact('case')">Ciekawostka</button>
+    </div>
+</section>
+
+
+
+    <script>
+        function showFact(component) {
+            let fact = '';
+            switch (component) {
+                case 'procesor':
+                    fact = 'Procesor Intel 4004 z 1971 roku miał zaledwie 2300 tranzystorów, podczas gdy dzisiejsze procesory mają miliardy!';
+                    break;
+                case 'ram':
+                    fact = 'RAM umożliwia szybkie przechowywanie i dostęp do danych, zwiększając wielozadaniowość komputera!';
+                    break;
+                case 'gpu':
+                    fact = 'Nowoczesne GPU wspomagają nie tylko gry, ale i przetwarzanie danych w sztucznej inteligencji oraz uczenie maszynowe (Machine learning)!';
+                    break;
+                case 'cooling':
+                    fact = 'Chłodzenie cieczą jest bardziej efektywne, ponieważ woda absorbuje ciepło znacznie szybciej niż powietrze.';
+                    break;
+                case 'motherboard':
+                    fact = 'Płyta główna to centrum komunikacji, gdzie wszystkie podzespoły wymieniają dane!';
+                    break;
+                case 'case':
+                    fact = 'Zwykła obudowa.';
+                    break;
+                case 'SSD':
+                    fact = 'Szybkość zapisu i odczytu – SSD potrafią wczytywać i zapisywać dane znacznie szybciej niż HDD. Może to skrócić czas uruchamiania systemu operacyjnego z kilkudziesięciu sekund do kilku.';
+                    break;
+                case 'network card':
+                    fact = 'Karty sieciowe do gier – Istnieją specjalne karty sieciowe stworzone z myślą o graczach. Mają one zaawansowane funkcje, takie jak priorytetyzowanie ruchu sieciowego (tzw. gaming QoS), co może zmniejszyć opóźnienia i poprawić stabilność połączenia w grach online';
+                    break;
+
+
+                   
+            }
+            alert(fact);
+        }
+    </script>
 </body>
 </html>
+
+
+            
